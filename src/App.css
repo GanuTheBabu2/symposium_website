@@ -56,12 +56,13 @@
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
       cursor: pointer;
       transition: all 0.3s ease;
+      z-index: 2; /* Ensure marble button is above the base */
     }
 
     /* Neon Circle */
     .neon-circle {
       position: absolute;
-      bottom: -15px;
+      bottom: -20px;
       left: 50%;
       transform: translateX(-50%);
       width: 80px;
@@ -70,20 +71,24 @@
       background: rgba(255, 255, 255, 0.1);
       filter: blur(10px);
       animation: neon-pulse 2s infinite alternate;
+      z-index: 1; /* Ensure neon circle is above the base */
     }
 
     /* Button Label */
     .button-label {
-      position: absolute;
-      bottom: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      font-size: 14px;
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-      text-align: center;
-      width: 100%; /* Ensure the label takes up the full width */
-    }
+  position: absolute;
+  bottom: -40px; /* Move it a little lower */
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  text-align: center;
+  width: 100%; /* Ensure full width to prevent misalignment */
+  white-space: nowrap; /* Prevent text from wrapping */
+  z-index: 3;
+}
+
 
     /* Neon Pulse Animation */
     @keyframes neon-pulse {
@@ -103,11 +108,19 @@
       transform: translateY(-5px);
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
     }
+.button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px; /* Ensure consistent width */
+  position: relative;
+}
 
     /* Base Plate */
     .button-base {
       position: absolute;
-      bottom: -20px;
+      bottom: -45px; /* Adjusted to be further below */
       left: 50%;
       transform: translateX(-50%);
       width: 80px;
@@ -117,7 +130,8 @@
       backdrop-filter: blur(5px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       animation: base-glow 3s infinite;
-      box-shadow: 0 0 5px 2px rgba(153, 51, 255, 0.3); /* Subtle neon glow */
+      box-shadow: 0 0 10px 5px rgba(153, 51, 255, 0.3); /* Stronger neon glow */
+      z-index: 0; /* Ensure base is below other elements */
     }
 
     @keyframes base-glow {
